@@ -7,18 +7,20 @@ import "./App.css";
 const App = () => {
   const [types, setTypes] = useState([]);
 
+  const getProofsSpirits = (proofs, spirits) => {
+    return proofs.map((p) => {
+      return {
+        proof: p.name,
+        // récupère tous les spirits qui ont "p" dans leur proofs"
+        spirits: spirits.map((s) => s.types.includes(p)),
+      };
+    });
+  };
+
   const toggleFilter = (filter) => {
     if (types.includes(filter)) {
       // Remove "filter" from "types".
       setTypes(types.filter((t) => t !== filter));
-
-      // const arr = []
-      // for(let i = 0 ; i < types.length ; ++i) {
-      //   if(types[i] !== filter) {
-      //     arr.push(types[i])
-      //   }
-      // }
-      // setTypes(arr)
     } else {
       setTypes([...types, filter]);
     }
@@ -28,7 +30,17 @@ const App = () => {
     return types.every((v) => list.includes(v));
   };
 
-  const shouldDisplayProof = () => true;
+  const shouldDisplayProof = (list) => {
+    // //get list of active proof
+    // let spiritActives;
+    // for(let i; i<types.length; i++){
+
+    // }
+
+    // let spirit getProofsSpirits
+
+    return true;
+  };
 
   useEffect(() => {
     console.log(types);
