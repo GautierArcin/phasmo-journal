@@ -31,11 +31,17 @@ const App = () => {
   };
 
   const shouldDisplayProof = (list) => {
-    // //get list of active proof
-    let spiritActives;
-    for (let i; i < types.length; i++) {}
+    // get list of all spirits
+    // let spiritPossible;
+    // for (let i; i < spirits.length; i++) {
+    //   spiritPossible = [...spiritPossible, spirits[i].name];
+    // }
 
-    // let spirit getProofsSpirits
+    // //
+    // let spiritActives = [""];
+    // for (let i; i < types.length; i++) {}
+
+    // // let spirit getProofsSpirits
 
     return true;
   };
