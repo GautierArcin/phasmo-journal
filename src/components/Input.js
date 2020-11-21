@@ -1,0 +1,1 @@
+const Input = () => <div></div>;
