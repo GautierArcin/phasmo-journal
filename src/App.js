@@ -6,6 +6,7 @@ import "./App.css";
 
 const App = () => {
   const [types, setTypes] = useState([]);
+  const [notTypes, setNotTypes] = useState([]);
 
   // const getProofsSpirits = (proofs, spirits) => {
   //   return proofs.map((p) => {
@@ -21,28 +22,24 @@ const App = () => {
     if (types.includes(filter)) {
       // Remove "filter" from "types".
       setTypes(types.filter((t) => t !== filter));
+      setNotTypes([...notTypes, filter]);
     } else {
-      setTypes([...types, filter]);
+      if (notTypes.includes(filter)) {
+        setNotTypes(notTypes.filter((t) => t !== filter));
+      } else {
+        setTypes([...types, filter]);
+      }
     }
   };
 
   const shouldDisplayButton = (list) => {
-    return types.every((v) => list.includes(v));
+    return (
+      types.every((v) => list.includes(v)) &&
+      notTypes.every((v) => !list.includes(v))
+    );
   };
 
   const shouldDisplayProof = (list) => {
-    // get list of all spirits
-    // let spiritPossible;
-    // for (let i; i < spirits.length; i++) {
-    //   spiritPossible = [...spiritPossible, spirits[i].name];
-    // }
-
-    // //
-    // let spiritActives = [""];
-    // for (let i; i < types.length; i++) {}
-
-    // // let spirit getProofsSpirits
-
     return true;
   };
 
@@ -62,6 +59,7 @@ const App = () => {
                 variant={p.name}
                 onClick={() => toggleFilter(p.name)}
                 active={types.includes(p.name)}
+                unactive={notTypes.includes(p.name)}
               />
             )
         )}
