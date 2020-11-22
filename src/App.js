@@ -137,7 +137,7 @@ const App = () => {
   return (
     <div className="App">
       <Input />
-      {visibleGhost.length <= 6 && visibleGhost.length > 1 && (
+      {visibleGhost.length <= 7 && visibleGhost.length > 1 && (
         <div className="bestProof">
           <p>
             <b>Best proof to investigate :</b> {bestProof}
