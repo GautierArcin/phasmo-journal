@@ -122,8 +122,8 @@ const App = () => {
 
   useEffect(() => {
     // console.log("visibleGhost: ", visibleGhost);
-    // eslint-disable-next-line
     computeBestProof();
+    // eslint-disable-next-line
   }, [visibleGhost]);
 
   useEffect(() => {
