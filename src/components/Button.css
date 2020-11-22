@@ -20,6 +20,10 @@
   border: 3px solid red;
 }
 
+.selected {
+  background-color: rgb(255, 255, 107);
+}
+
 .EMF {
   border: 1px solid #6b0f0f;
   background-color: #f44336;

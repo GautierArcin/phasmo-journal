@@ -8,11 +8,12 @@ const Button = ({
   onClick,
   active,
   unactive,
+  selected,
 }) => (
   <button
     className={`button ${variant} ${active ? "active" : ""} ${
       unactive ? "unactive" : ""
-    }`}
+    } ${selected ? "selected" : ""}`}
     title={description}
     onClick={onClick}
   >
