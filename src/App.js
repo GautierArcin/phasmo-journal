@@ -6,40 +6,40 @@ import "./App.css";
 
 const App = () => {
   const [types, setTypes] = useState([]);
+  const [notTypes, setNotTypes] = useState([]);
 
-  const getProofsSpirits = (proofs, spirits) => {
-    return proofs.map((p) => {
-      return {
-        proof: p.name,
-        // récupère tous les spirits qui ont "p" dans leur proofs"
-        spirits: spirits.map((s) => s.types.includes(p)),
-      };
-    });
-  };
+  // const getProofsSpirits = (proofs, spirits) => {
+  //   return proofs.map((p) => {
+  //     return {
+  //       proof: p.name,
+  //       // récupère tous les spirits qui ont "p" dans leur proofs"
+  //       spirits: spirits.map((s) => s.types.includes(p)),
+  //     };
+  //   });
+  // };
 
   const toggleFilter = (filter) => {
     if (types.includes(filter)) {
       // Remove "filter" from "types".
       setTypes(types.filter((t) => t !== filter));
+      setNotTypes([...notTypes, filter]);
     } else {
-      setTypes([...types, filter]);
+      if (notTypes.includes(filter)) {
+        setNotTypes(notTypes.filter((t) => t !== filter));
+      } else {
+        setTypes([...types, filter]);
+      }
     }
   };
 
   const shouldDisplayButton = (list) => {
-    return types.every((v) => list.includes(v));
+    return (
+      types.every((v) => list.includes(v)) &&
+      notTypes.every((v) => !list.includes(v))
+    );
   };
 
   const shouldDisplayProof = (list) => {
-    let possibleSpirits = getProofsSpirits(types, spirits);
-    console.log("cc");
-    console.log(possibleSpirits);
-    if (!possibleSpirits[0]) return true;
-    let truePossibleSpirits;
-    truePossibleSpirits = possibleSpirits.reduce((a, b) =>
-      a.spirits.map((c, i) => b[i] && c)
-    );
-    console.log(truePossibleSpirits);
     return true;
   };
 
@@ -59,6 +59,7 @@ const App = () => {
                 variant={p.name}
                 onClick={() => toggleFilter(p.name)}
                 active={types.includes(p.name)}
+                unactive={notTypes.includes(p.name)}
               />
             )
         )}
