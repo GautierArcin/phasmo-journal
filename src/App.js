@@ -140,7 +140,7 @@ const App = () => {
       {visibleGhost.length <= 6 && visibleGhost.length > 1 && (
         <div className="bestProof">
           <p>
-            <b>Best proof:</b> {bestProof}
+            <b>Best proof to investigate :</b> {bestProof}
           </p>
         </div>
       )}
